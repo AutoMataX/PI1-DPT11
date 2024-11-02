@@ -6,6 +6,13 @@ import pandas as pd
 app = FastAPI()
 
 # http://127.0.0.1:8000 
+
+
+#Auxiliary structures:
+
+dict_month = {'Enero':'01', 'Febrero':'02', 'Marzo':'03', 'Abril':'04', 'Mayo':'05', 'Junio':'06',
+        'Julio':'07', 'Agosto':'08', 'Septiembre':'09', 'Octubre':'10', 'Noviembre': '11', 'Diciembre':'12'}
+
 df = pd.read_csv(('./movies_data/movies_dataset_TandRBylanguage.csv'))
 
 
@@ -53,3 +60,16 @@ def votos_titulo(title):
     sentence = 'La película \'' + title + '\' fue estrenada en el año ' + year + '. ' + voto_str
 
     return sentence
+
+
+
+@app.get('/cantidad')
+def cantidad_filmaciones_mes(mes): 
+
+    # Se ingresa un mes en idioma Español. Devuelve: 
+    # - Cantidad de películas estrenadas en el mes consultado, en la TOTALIDAD del dataset
+    # It uses a dictrionary created on the first sections of this script: 'dict_mont'
+
+    amount = np.shape(df[df['release_month'] == dict_month[mes]])[0]
+
+    return amount
