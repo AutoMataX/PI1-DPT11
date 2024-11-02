@@ -39,10 +39,10 @@ def votos_titulo(title):
 
     row = df[df['title'] == title].index[0]
 
-    score = df['vote_average'][row]
+    score = str(df['vote_average'][row])
     year = str(df['release_year'][row])
 
-    voto_count = str(df['vote_count'][row])
+    voto_count = df['vote_count'][row]
     voto_str = 'La misma no tiene el número de votos mínimo para poder informar su votación'
 
     if voto_count >= 2000:
