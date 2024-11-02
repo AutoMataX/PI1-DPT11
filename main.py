@@ -72,6 +72,6 @@ def cantidad_filmaciones_mes(mes):
 
     amount = np.shape(df[df['release_month'] == dict_month[mes]])[0]
 
-    sentence = str(amount)+' cantidad de películas fueron estrenadas en el mes de ' + mes
+    sentence = 'La cantidad de películas fueron estrenadas en el mes de ' + mes + ' fueron: ' + str(amount)
 
     return amount
