@@ -13,7 +13,7 @@ app = FastAPI()
 dict_month = {'Enero':'01', 'Febrero':'02', 'Marzo':'03', 'Abril':'04', 'Mayo':'05', 'Junio':'06',
         'Julio':'07', 'Agosto':'08', 'Septiembre':'09', 'Octubre':'10', 'Noviembre': '11', 'Diciembre':'12'}
 
-df = pd.read_csv(('./movies_data/movies_dataset_TandRBylanguage.csv'))
+df = pd.read_csv(('./movies_data/movies_dataset.csv'))
 
 
 @app.get('/')
@@ -75,3 +75,4 @@ def cantidad_filmaciones_mes(mes):
     sentence = 'La cantidad de películas fueron estrenadas en el mes de ' + mes + ' fueron: ' + str(amount)
 
     return amount
+
