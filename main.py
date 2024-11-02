@@ -26,7 +26,7 @@ def score_titulo(title):
     
     return sentence
 
-"""
+
 @app.get('/votos')
 def votos_titulo(title):
 
@@ -39,7 +39,7 @@ def votos_titulo(title):
 
     row = df[df['title'] == title].index[0]
 
-    score = str(df['vote_average'][row])
+    score = df['vote_average'][row]
     year = str(df['release_year'][row])
 
     voto_count = str(df['vote_count'][row])
@@ -47,8 +47,9 @@ def votos_titulo(title):
 
     if voto_count >= 2000:
 
-        voto_str = 'La misma cuenta con un total de ' + voto_count + ' valoraciones, con un promedio de ' + score
+        voto_str = 'La misma cuenta con un total de ' + str(voto_count) + ' valoraciones, con un promedio de ' + score
        
 
     sentence = 'La película \'' + title + '\' fue estrenada en el año ' + year + '. ' + voto_str
-"""
+
+    return sentence
