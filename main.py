@@ -99,9 +99,9 @@ def recomendacion(titulo):
 
     recommended_movies = '/ '.join(recommended_movies)
 
-    sentence = 'Basado en la película ingresada, le recomendamos los siguientes títulos: ' + recommended_movies
+    #sentence = 'Basado en la película ingresada, le recomendamos los siguientes títulos: ' + recommended_movies
 
-    return sentence
+    return (f"Basado en la pelicula ingresada, le recomendamos los siguientes titulos: {recommended_movies}")
 
 
 
