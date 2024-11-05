@@ -91,11 +91,11 @@ def recomendacion(titulo):
     # This function recommend 5 movies based on a movie that you already like
 
     #Getting sample parameteres:
-    row = df[df['title'] == value].index[0] 
+    row = df[df['title'] == titulo].index[0] 
     sub_df = df[df['genres'] == df['genres'].iloc[row]]
     sub_df = sub_df[['title', 'genres', 'vote_average', 'popularity']]
 
-    recommended_movies = sub_df[sub_df['title'] != value].sort_values(by = ['popularity', 'vote_average'], ascending = False)['title'].head(5)
+    recommended_movies = sub_df[sub_df['title'] != titulo].sort_values(by = ['popularity', 'vote_average'], ascending = False)['title'].head(5)
 
     recommended_movies = '/ '.join(recommended_movies)
 
