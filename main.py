@@ -85,7 +85,7 @@ def cantidad_filmaciones_mes(mes):
 
 ### RECOMENDATION SYSTEM
 
-@app.get('/recomendacion')
+@app.get('/recomendacion',debug=true)
 def recomendacion(titulo):
 
     # This function recommend 5 movies based on a movie that you already like
