@@ -74,7 +74,7 @@ def cantidad_filmaciones_mes(mes):
 
     sentence = 'La cantidad de películas fueron estrenadas en el mes de ' + mes + ' fueron: ' + str(amount)
 
-    return amount
+    return sentence
 
 
 
