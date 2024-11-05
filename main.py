@@ -16,7 +16,7 @@ dict_month = {'Enero':'01', 'Febrero':'02', 'Marzo':'03', 'Abril':'04', 'Mayo':'
 df = pd.read_csv(('./movies_data/movies_dataset.csv'))
 
 
-@app.get('/score')
+@app.get('/score', debug = True)
 def score_titulo(title):
 
     # Ingresando el título de una filmación, da como respuesta:
@@ -34,7 +34,7 @@ def score_titulo(title):
     return sentence
 
 
-@app.get('/votos')
+@app.get('/votos', debug = True)
 def votos_titulo(titulo):
 
     # Ingresando el título de una filmación, devuelve:
@@ -85,7 +85,7 @@ def cantidad_filmaciones_mes(mes):
 
 ### RECOMENDATION SYSTEM
 
-@app.get('/recomendacion',debug = True)
+@app.get('/recomendacion', debug = True)
 def recomendacion(titulo):
 
     # This function recommend 5 movies based on a movie that you already like
