@@ -17,14 +17,13 @@ df = pd.read_csv(('./movies_data/movies_dataset.csv'))
 
 
 @app.get('/')
-def score_titulo(titulo:str):
+def score_titulo(titulo):
 
     # Ingresando el título de una filmación, da como respuesta:
     # - Título
     # - Año de estreno
     # - Score.
 
-    titulo = titulo.title()
     row = df[df['title'] == titulo].index[0]
 
     score = str(df['vote_average'][row])
@@ -36,7 +35,7 @@ def score_titulo(titulo:str):
 
 
 @app.get('/votos')
-def votos_titulo(titulo:str):
+def votos_titulo(titulo):
 
     # Ingresando el título de una filmación, devuelve:
     # - 1. Título
@@ -45,7 +44,6 @@ def votos_titulo(titulo:str):
     # La variable (2) deberá de contar con al menos 2000 valoraciones, caso contrario, 
     # avisa que no cumple esta condición y que por ende, no se devuelve ningun valor.
 
-    titulo = titulo.title()
     row = df[df['title'] == titulo].index[0]
 
     score = str(df['vote_average'][row])
@@ -66,7 +64,7 @@ def votos_titulo(titulo:str):
 
 
 @app.get('/cantidad', debug = True)
-def cantidad_filmaciones_mes(mes:str): 
+def cantidad_filmaciones_mes(mes): 
 
     # Se ingresa un mes en idioma Español. Devuelve: 
     # - Cantidad de películas estrenadas en el mes consultado, en la TOTALIDAD del dataset
