@@ -85,7 +85,7 @@ def cantidad_filmaciones_mes(mes):
 
 ### RECOMENDATION SYSTEM
 
-@app.get('/recomendacion',debug=true)
+@app.get('/recomendacion',debug = True)
 def recomendacion(titulo):
 
     # This function recommend 5 movies based on a movie that you already like
@@ -99,9 +99,9 @@ def recomendacion(titulo):
 
     recommended_movies = '/ '.join(recommended_movies)
 
-    sentence = 'Basado en la película ingresada, le recomendamos los siguientes títulos: ' + recommended_movies
+    #sentence = 'Basado en la película ingresada, le recomendamos los siguientes títulos: ' + recommended_movies
 
-    return sentence #(f"Basado en la pelicula ingresada, le recomendamos los siguientes titulos: {recommended_movies}")
+    return (f"Basado en la pelicula ingresada, le recomendamos los siguientes titulos: {recommended_movies}")
 
 
 
