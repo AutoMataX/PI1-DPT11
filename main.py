@@ -16,20 +16,20 @@ dict_month = {'Enero':'01', 'Febrero':'02', 'Marzo':'03', 'Abril':'04', 'Mayo':'
 df = pd.read_csv(('./movies_data/movies_dataset.csv'))
 
 
-@app.get('/')
-def score_titulo(titulo):
+@app.get('/score')
+def score_titulo(title):
 
     # Ingresando el título de una filmación, da como respuesta:
     # - Título
     # - Año de estreno
     # - Score.
 
-    row = df[df['title'] == titulo].index[0]
+    row = df[df['title'] == title].index[0]
 
     score = str(df['vote_average'][row])
     year = str(df['release_year'][row])
 
-    sentence = 'La película \'' + titulo + '\' fue estrenada en el año ' + year + ' con un score/popularidad de: ' + score
+    sentence = 'La película \'' + title + '\' fue estrenada en el año ' + year + ' con un score/popularidad de: ' + score
     
     return sentence
 
