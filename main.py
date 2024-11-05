@@ -17,25 +17,26 @@ df = pd.read_csv(('./movies_data/movies_dataset.csv'))
 
 
 @app.get('/')
-def score_titulo(title):
+def score_titulo(titulo:str):
 
     # Ingresando el título de una filmación, da como respuesta:
     # - Título
     # - Año de estreno
     # - Score.
 
-    row = df[df['title'] == title].index[0]
+    titulo = titulo.title()
+    row = df[df['title'] == titulo].index[0]
 
     score = str(df['vote_average'][row])
     year = str(df['release_year'][row])
 
-    sentence = 'La película \'' + title + '\' fue estrenada en el año ' + year + ' con un score/popularidad de: ' + score
+    sentence = 'La película \'' + titulo + '\' fue estrenada en el año ' + year + ' con un score/popularidad de: ' + score
     
     return sentence
 
 
 @app.get('/votos')
-def votos_titulo(title):
+def votos_titulo(titulo:str):
 
     # Ingresando el título de una filmación, devuelve:
     # - 1. Título
@@ -44,7 +45,8 @@ def votos_titulo(title):
     # La variable (2) deberá de contar con al menos 2000 valoraciones, caso contrario, 
     # avisa que no cumple esta condición y que por ende, no se devuelve ningun valor.
 
-    row = df[df['title'] == title].index[0]
+    titulo = titulo.title()
+    row = df[df['title'] == titulo].index[0]
 
     score = str(df['vote_average'][row])
     year = str(df['release_year'][row])
@@ -57,14 +59,14 @@ def votos_titulo(title):
         voto_str = 'La misma cuenta con un total de ' + str(voto_count) + ' valoraciones, con un promedio de ' + score
        
 
-    sentence = 'La película \'' + title + '\' fue estrenada en el año ' + year + '. ' + voto_str
+    sentence = 'La película \'' + titulo + '\' fue estrenada en el año ' + year + '. ' + voto_str
 
     return sentence
 
 
 
-@app.get('/cantidad')
-def cantidad_filmaciones_mes(mes): 
+@app.get('/cantidad', debug = True)
+def cantidad_filmaciones_mes(mes:str): 
 
     # Se ingresa un mes en idioma Español. Devuelve: 
     # - Cantidad de películas estrenadas en el mes consultado, en la TOTALIDAD del dataset
