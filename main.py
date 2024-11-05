@@ -10,14 +10,14 @@ app = FastAPI()
 
 #Auxiliary structures:
 
-dict_month = {'Enero':'01', 'Febrero':'02', 'Marzo':'03', 'Abril':'04', 'Mayo':'05', 'Junio':'06',
-        'Julio':'07', 'Agosto':'08', 'Septiembre':'09', 'Octubre':'10', 'Noviembre': '11', 'Diciembre':'12'}
+dict_month = {'Enero':'1', 'Febrero':'2', 'Marzo':'3', 'Abril':'4', 'Mayo':'5', 'Junio':'6',
+        'Julio':'7', 'Agosto':'8', 'Septiembre':'9', 'Octubre':'10', 'Noviembre': '11', 'Diciembre':'12'}
 
 df = pd.read_csv(('./movies_data/movies_dataset.csv'))
 
 
 @app.get('/score', debug = True)
-def score_titulo(title):
+def score_titulo(title:str):
 
     # Ingresando el título de una filmación, da como respuesta:
     # - Título
