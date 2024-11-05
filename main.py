@@ -95,9 +95,11 @@ def recomendacion(titulo):
     sub_df = df[df['genres'] == df['genres'].iloc[row]]
     sub_df = sub_df[['title', 'genres', 'vote_average', 'popularity']]
 
-    recommended_movies = sub_df.sort_values(by = ['popularity', 'vote_average'], ascending = False)['title'].head(5)
+    recommended_movies = sub_df[sub_df['title'] != value].sort_values(by = ['popularity', 'vote_average'], ascending = False)['title'].head(5)
 
-    sentence = '/ '.join(recommended_movies)
+    recommended_movies = '/ '.join(recommended_movies)
+
+    sentence = 'Basado en la película ingresada, le recomendamos los siguientes títulos: ' + recommended_movies
 
     return sentence
 
