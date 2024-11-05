@@ -13,7 +13,7 @@ app = FastAPI()
 dict_month = {'Enero':'1', 'Febrero':'2', 'Marzo':'3', 'Abril':'4', 'Mayo':'5', 'Junio':'6',
         'Julio':'7', 'Agosto':'8', 'Septiembre':'9', 'Octubre':'10', 'Noviembre': '11', 'Diciembre':'12'}
 
-df = pd.read_csv(('./movies_data/movies_dataset.csv'))
+df = pd.read_csv('./movies_data/movies_dataset.csv')
 
 
 @app.get('/score', debug = True)
@@ -29,9 +29,10 @@ def score_titulo(title:str):
     score = str(df['vote_average'][row])
     year = str(df['release_year'][row])
 
-    sentence = 'La película \'' + title + '\' fue estrenada en el año ' + year + ' con un score/popularidad de: ' + score
+    #sentence = 'La película \'' + title + '\' fue estrenada en el año ' + year + ' con un score/popularidad de: ' + score
     
-    return sentence
+
+    return (f"La pelicula {title}, fue estrenada en el año {year}, con un score/popularidad de: {score}")
 
 
 @app.get('/votos', debug = True)
