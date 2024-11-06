@@ -2,13 +2,8 @@ from fastapi import FastAPI
 
 import pandas as pd
 import numpy as np
-#import matplotlib.pyplot as plt
-from collections import Counter
-import seaborn as sns
-import re
-import datetime as dt
-import calendar
-#import datetime
+#import datetime as dt
+#import calendar
 
 app = FastAPI()
 
