@@ -21,7 +21,7 @@ dict_day = {'Lunes':'0', 'Martes':'1', 'Miercoles':'3',
 df = pd.read_csv('./movies_data/movies_dataset.csv')
 
 
-@app.get('/', debug = True)
+@app.get('/')
 def score_titulo(titulo):
 
     # Ingresando el título de una filmación, da como respuesta:
@@ -41,7 +41,7 @@ def score_titulo(titulo):
     return sentence
 
 
-@app.get('/votos', debug = True)
+@app.get('/votos')
 def votos_titulo(titulo):
 
     # Ingresando el título de una filmación, devuelve:
@@ -70,7 +70,7 @@ def votos_titulo(titulo):
 
 
 
-@app.get('/cantidad mes', debug = True)
+@app.get('/cantidad mes')
 def cantidad_filmaciones_mes(mes): 
 
     # Se ingresa un mes en idioma Español. Devuelve: 
@@ -85,7 +85,7 @@ def cantidad_filmaciones_mes(mes):
 
 
 
-@app.get('/cantidad dia', debug = True)
+@app.get('/cantidad dia')
 def cantidad_filmaciones_dia(dia): 
 
     # Se ingresa un dia en idioma Español. Devuelve: 
@@ -104,7 +104,7 @@ def cantidad_filmaciones_dia(dia):
 
 ### RECOMENDATION SYSTEM
 
-@app.get('/recomendacion', debug = True)
+@app.get('/recomendacion')
 def recomendacion(titulo):
 
     # This function recommend 5 movies based on a movie that you already like
