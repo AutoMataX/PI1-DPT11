@@ -13,6 +13,9 @@ app = FastAPI()
 dict_month = {'Enero':'1', 'Febrero':'2', 'Marzo':'3', 'Abril':'4', 'Mayo':'5', 'Junio':'6',
         'Julio':'7', 'Agosto':'8', 'Septiembre':'9', 'Octubre':'10', 'Noviembre': '11', 'Diciembre':'12'}
 
+dict_day = {'Lunes':'0', 'Martes':'1', 'Miercoles':'3',
+              'Jueves':'4', 'Friday':'5', 'Sabado':'6', 'Domingo':'7'}
+
 df = pd.read_csv('./movies_data/movies_dataset.csv')
 
 
@@ -30,10 +33,10 @@ def score_titulo(titulo):
     score = str(df['vote_average'][row])
     year = str(df['release_year'][row])
 
-    #sentence = 'La película \'' + title + '\' fue estrenada en el año ' + year + ' con un score/popularidad de: ' + score
-    
+    sentence = 'La película \'' + titulo + '\' fue estrenada en el año ' + year + ' con un score/popularidad de: ' + score
+    # (f"La pelicula {titulo}, fue estrenada en el año {year}, con un score/popularidad de: {score}")
 
-    return (f"La pelicula {titulo}, fue estrenada en el año {year}, con un score/popularidad de: {score}")
+    return sentence
 
 
 @app.get('/votos', debug = True)
@@ -46,7 +49,7 @@ def votos_titulo(titulo):
     # La variable (2) deberá de contar con al menos 2000 valoraciones, caso contrario, 
     # avisa que no cumple esta condición y que por ende, no se devuelve ningun valor.
 
-    row = df[df['title'] == titulo].index[0]
+    row = df.index[df['title'] == titulo][0]
 
     score = str(df['vote_average'][row])
     year = str(df['release_year'][row])
@@ -65,14 +68,14 @@ def votos_titulo(titulo):
 
 
 
-@app.get('/cantidad', debug = True)
+@app.get('/cantidad mes', debug = True)
 def cantidad_filmaciones_mes(mes): 
 
     # Se ingresa un mes en idioma Español. Devuelve: 
     # - Cantidad de películas estrenadas en el mes consultado, en la TOTALIDAD del dataset
-    # It uses a dictrionary created on the first sections of this script: 'dict_mont'
+    # It uses a dictionary created on the first sections of this script: 'dict_mont'
 
-    amount = np.shape(df[df['release_month'] == dict_month[mes]])[0]
+    amount = np.shape(df[df['release_month'].astype(str) == dict_month[mes]])[0]
 
     sentence = 'La cantidad de películas fueron estrenadas en el mes de ' + mes + ' fueron: ' + str(amount)
 
@@ -80,6 +83,18 @@ def cantidad_filmaciones_mes(mes):
 
 
 
+@app.get('/cantidad dia', debug = True)
+def cantidad_filmaciones_dia(dia): 
+
+    # Se ingresa un dia en idioma Español. Devuelve: 
+    # - Cantidad de películas estrenadas en el dia consultado, en la TOTALIDAD del dataset
+    # It uses a dictionary created on the first sections of this script: 'dict_dia'
+
+    amount = np.shape(df[df['release_day'].astype(str) == dict_day[dia]])[0]
+
+    sentence = 'La cantidad de películas fueron estrenadas en el dia ' + dia + ' fueron: ' + str(amount)
+
+    return sentence
 
 
 
