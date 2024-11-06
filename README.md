@@ -55,5 +55,8 @@ Pasos de instalación:
 - README.md: Documentación.
 
 
+Los títulos de las peliculas que se consultan, deben estar ya en la base de datos (archivo movies_dataset.csv)
+
+
 Autores
 Luis Mata - Contacto: LinkedIn.
