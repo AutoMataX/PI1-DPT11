@@ -108,7 +108,7 @@ def recomendacion(titulo):
     # This function recommend 5 movies based on a movie that you already like
 
     #Getting sample parameteres:
-    row = df[df['title'] == titulo].index[0] 
+    row = df.index[df['title'] == titulo][0] 
     sub_df = df[df['genres'] == df['genres'].iloc[row]]
     sub_df = sub_df[['title', 'genres', 'vote_average', 'popularity']]
 
